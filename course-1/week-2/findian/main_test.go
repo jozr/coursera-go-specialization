@@ -6,7 +6,7 @@ import (
 
 // TestFoundTrue tests strings that should return true
 func TestFoundTrue(t *testing.T) {
-	strings := []string{"ian", "Ian", "iuiygaygn", "I d skd a efju N"}
+	strings := [...]string{"ian", "Ian", "iuiygaygn", "I d skd a efju N"}
 
 	for _, str := range strings {
 		if found(str) == false {
@@ -17,7 +17,7 @@ func TestFoundTrue(t *testing.T) {
 
 // TestFoundFalse tests strings that should return false
 func TestFoundFalse(t *testing.T) {
-	strings := []string{"ihhhhhn", "ina", "xian"}
+	strings := [...]string{"ihhhhhn", "ina", "xian"}
 
 	for _, str := range strings {
 		if found(str) == true {
