@@ -7,7 +7,7 @@ func main() {
 
 	fmt.Printf("Please enter a float:\n")
 
-	_, err := fmt.Scanln(&f)
+	_, err := fmt.Scan(&f)
 	i := int64(f)
 
 	if err != nil {
