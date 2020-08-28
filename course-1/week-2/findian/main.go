@@ -6,10 +6,9 @@ import (
 )
 
 func main() {
-	var str string
-
 	fmt.Printf("Please enter string:\n")
 
+	var str string
 	_, err := fmt.Scan(&str)
 
 	if !found(str) || err != nil {
