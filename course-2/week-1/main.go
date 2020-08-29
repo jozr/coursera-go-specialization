@@ -3,46 +3,27 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 func main() {
-	var input string
+	integers := make([]int, 0, 10)
 
-	fmt.Println("Enter a up to 10 sequential integers without spaces:")
-	fmt.Scan(&input)
+	for i := 0; i < 10; i++ {
+		var input string
 
-	integers, err := ParseUserInput(input)
+		fmt.Println("Enter an integer:")
+		fmt.Scan(&input)
 
-	if err != nil {
-		fmt.Println("Incorrect input type. Please enter integers.")
-		return
-	}
-
-	if len(integers) > 10 {
-		fmt.Println("There are more than 10 integers.")
-		return
-	}
-
-	fmt.Println(BubbleSort(integers))
-}
-
-// ParseUserInput parses the user input into a slice of integers
-func ParseUserInput(input string) ([]int, error) {
-	numbers := strings.Split(input, "")
-	integers := make([]int, 0, len(numbers))
-
-	for _, number := range numbers {
-		integer, err := strconv.Atoi(number)
-
+		integer, err := strconv.Atoi(input)
 		if err != nil {
-			return nil, err
+			fmt.Println("Incorrect input type. Please enter integers.")
+			return
 		}
 
 		integers = append(integers, integer)
 	}
 
-	return integers, nil
+	fmt.Println(BubbleSort(integers))
 }
 
 // BubbleSort sorts a series of integers from least to greatest
