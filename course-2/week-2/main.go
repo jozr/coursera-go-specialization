@@ -10,6 +10,7 @@ func main() {
 	acceleration, err := ScanFloat64("acceleration")
 	initialVelocity, err := ScanFloat64("initial velocity")
 	initialDisplacement, err := ScanFloat64("initial displacement")
+	time, err := ScanFloat64("time")
 
 	if err != nil {
 		fmt.Println("An incorrect type was entered.")
@@ -17,11 +18,6 @@ func main() {
 	}
 
 	displaceFn := GenDisplaceFn(acceleration, initialVelocity, initialDisplacement)
-
-	var time float64
-	fmt.Println("Enter time :")
-	fmt.Scan(&time)
-
 	fmt.Println(displaceFn(time))
 }
 
