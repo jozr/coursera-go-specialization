@@ -13,8 +13,8 @@ func main() {
 		var actionInput string
 
 		fmt.Print("> ")
-		_, err := fmt.Scanln(&animalInput, &actionInput)
 
+		_, err := fmt.Scanln(&animalInput, &actionInput)
 		if err != nil {
 			if animalInput == "X" {
 				break
