@@ -5,6 +5,73 @@ import (
 	"fmt"
 )
 
+type Animal interface {
+	Eat()
+	Move()
+	Speak()
+}
+
+type Cow struct{ name string }
+
+func (Cow) Eat()   { fmt.Println("grass") }
+func (Cow) Move()  { fmt.Println("walk") }
+func (Cow) Speak() { fmt.Println("moo") }
+
+type Bird struct{ name string }
+
+func (Bird) Eat()   { fmt.Println("worms") }
+func (Bird) Move()  { fmt.Println("fly") }
+func (Bird) Speak() { fmt.Println("peep") }
+
+type Snake struct{ name string }
+
+func (Snake) Eat()   { fmt.Println("mice") }
+func (Snake) Move()  { fmt.Println("slither") }
+func (Snake) Speak() { fmt.Println("hsss") }
+func createAnimal(name string, category string) (Animal, error) {
+	var animal Animal
+	var err error
+
+	switch category {
+	case "cow":
+		animal = Cow{}
+	case "bird":
+		animal = Bird{}
+	case "snake":
+		animal = Snake{}
+	default:
+		err = errors.New("The animal type was unrecognized. Please choose from: cow, bird, snake")
+	}
+
+	return animal, err
+}
+
+func printActionAnswer(animal Animal, action string) {
+	switch action {
+	case "eat":
+		animal.Eat()
+	case "move":
+		animal.Move()
+	case "speak":
+		animal.Speak()
+	default:
+		fmt.Println("The animal action was unrecognized. Please choose from: eat, move, speak")
+	}
+}
+
+func printInstructions() {
+	fmt.Println("--------------------------------------")
+	fmt.Println("Enter a command separated by a spaces.")
+	fmt.Println()
+	fmt.Println("Examples:")
+	fmt.Println("> newanimal fatima bird")
+	fmt.Println("> query fatima move")
+	fmt.Println()
+	fmt.Println("Enter 'X' to exit.")
+	fmt.Println("--------------------------------------")
+	fmt.Println()
+}
+
 func main() {
 	printInstructions()
 	animals := make(map[string]Animal)
@@ -49,96 +116,4 @@ func main() {
 			printActionAnswer(animals[name], info)
 		}
 	}
-}
-
-func printInstructions() {
-	fmt.Println("--------------------------------------")
-	fmt.Println("Enter a command separated by a spaces.")
-	fmt.Println()
-	fmt.Println("Examples:")
-	fmt.Println("> newanimal fatima bird")
-	fmt.Println("> query fatima move")
-	fmt.Println()
-	fmt.Println("Enter 'X' to exit.")
-	fmt.Println("--------------------------------------")
-	fmt.Println()
-}
-
-func createAnimal(name string, category string) (Animal, error) {
-	var animal Animal
-	var err error
-
-	switch category {
-	case "cow":
-		animal = Cow{}
-	case "bird":
-		animal = Bird{}
-	case "snake":
-		animal = Snake{}
-	default:
-		err = errors.New("The animal type was unrecognized. Please choose from: cow, bird, snake")
-	}
-
-	return animal, err
-}
-
-func printActionAnswer(animal Animal, action string) {
-	switch action {
-	case "eat":
-		animal.Eat()
-	case "move":
-		animal.Move()
-	case "speak":
-		animal.Speak()
-	default:
-		fmt.Println("The animal action was unrecognized. Please choose from: eat, move, speak")
-	}
-}
-
-type Animal interface {
-	Eat()
-	Move()
-	Speak()
-}
-
-type Cow struct{ name string }
-
-func (Cow) Eat() {
-	fmt.Println("grass")
-}
-
-func (Cow) Move() {
-	fmt.Println("walk")
-}
-
-func (Cow) Speak() {
-	fmt.Println("moo")
-}
-
-type Bird struct{ name string }
-
-func (Bird) Eat() {
-	fmt.Println("worms")
-}
-
-func (Bird) Move() {
-	fmt.Println("fly")
-}
-
-func (Bird) Speak() {
-	fmt.Println("peep")
-}
-
-type Snake struct{ name string }
-
-func (Snake) Eat() {
-	fmt.Println("mice")
-}
-
-func (Snake) Move() {
-	fmt.Println("slither")
-}
-
-func (Snake) Speak() {
-	fmt.Println("hsss")
 }
