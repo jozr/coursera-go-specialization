@@ -1,0 +1,8 @@
+Moore’s law predicts that transistor density doubles every two years. Until recently, this observation seemed to hold true. However, at this point, there are physical limitations that slow the continuation of this exponential increase.
+
+Some of the physical limitations are as follows:
+- Power needs to be higher as transistor density increases
+- High temperature because of high power
+    - Many high power machines now require cooling devices and fans
+
+Voltage scaling is an important concept related to Moore’s Law because voltage scaling can keep power consumption low. However, voltage scaling cannot prevent leakage power and has noise problems.
