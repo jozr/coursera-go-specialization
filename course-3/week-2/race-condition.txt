@@ -1,1 +1,0 @@
-A race condition in software is a condition in which the program's outcome is based on the order or timing of non-deterministic events.
