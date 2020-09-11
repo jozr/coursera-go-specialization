@@ -9,6 +9,9 @@ import (
 // outcome is based on the order or timing of non-deterministic events.
 // The below program exemplifies a basic race condition.
 
+// To check if this produces a race condition run:
+// `go run -race`
+
 func race(sleep bool) int {
 	// A variable is added as storage for an integer (a counter).
 	counter := 0
